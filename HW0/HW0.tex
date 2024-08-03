@@ -1,0 +1,396 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage,enumitem,amsmath,amssymb,graphicx}
+\usepackage{enumerate}
+\usepackage[table]{xcolor}
+
+\begin{document}
+
+\begin{center}
+{\Large CS M146 Fall 2023 Homework 0}
+
+\vspace{0.5em}
+
+\begin{tabular}{rl}
+UCLA ID: & [205452321] \\
+Name: & [Ken DENG] \\
+Collaborators: & [list all the people you worked with]
+\end{tabular}
+\end{center}
+
+By turning in this assignment, I agree by the UCLA honor code and declare
+that all of this is my own work.
+
+\section*{Problem 1}
+
+Consider $y = x \sin(z)e^{-x}$. What is the partial derivative of $y$ with respect to $x$?
+
+\begin{align*}
+\dfrac{\partial y}{\partial x} &= \dfrac{\partial(\sin(z)xe^{-x})}{\partial x}\\
+&= \sin(z)e^{-x} - \sin(z)xe^{-x}\\
+&= \colorbox{yellow}{$(1-x)\sin(z)e^{-x}$}
+\end{align*}
+
+\section*{Problem 2}
+
+(a) Consider the matrix $\mathbf{X}$ and the vectors $\mathbf{y}$ and $\mathbf{z}$ below:
+$$\mathbf{X} =    \begin{pmatrix}  2 & 4 \\ 1 & 3 \\ \end{pmatrix} \qquad \mathbf{y} =  \begin{pmatrix}  1 \\ 3 \\ \end{pmatrix} \qquad \mathbf{z} =  \begin{pmatrix}  2 \\ 3 \\ \end{pmatrix}$$
+  
+\vspace{1em}
+
+i. What is the inner product $\mathbf{y}^{T}\mathbf{z}$?
+\begin{align*}
+\mathbf{y}^{T}\mathbf{z} &= \begin{pmatrix}  1 & 3 \\ \end{pmatrix} \begin{pmatrix}  2 \\ 3 \\ \end{pmatrix} \\
+&= 1 \cdot 2 + 3 \cdot 3\\
+&= 2 + 9 \\
+&= \colorbox{yellow}{11}
+\end{align*}
+
+ii. What is the product $\mathbf{Xy}$?
+\begin{align*}
+\mathbf{Xy} &= \begin{pmatrix}  2 & 4 \\ 1 & 3 \\ \end{pmatrix} \begin{pmatrix}  1 \\ 3 \end{pmatrix} \\
+&= 2 \cdot 1 + 4 \cdot 3 + 1 \cdot 1 + 3 \cdot 3\\
+&= 2 + 12 + 1 + 9 \\
+&= \colorbox{yellow}{24}
+\end{align*}
+
+iii. Is $\mathbf{X}$ invertible? If so, give the inverse; if not, explain why not.\\
+
+Yes, $\mathbf{X}$ is invertible.
+$$\begin{pmatrix}  2 & 4 & 1 & 0\\ 1 & 3 & 0 & 1\\ \end{pmatrix} \sim \begin{pmatrix}  1 & 2 & \frac{1}{2} & 0\\ 1 & 3 & 0 & 1\\ \end{pmatrix} \sim \begin{pmatrix}  1 & 2 & \frac{1}{2} & 0\\ 0 & 1 & -\frac{1}{2} & 1\\ \end{pmatrix} \sim \begin{pmatrix}  1 & 0 & \frac{3}{2} & -2\\ 0 & 1 & -\frac{1}{2} & 1\\ \end{pmatrix}$$
+
+Therefore,
+$$\mathbf{X}^{-1} = \colorbox{yellow}{$\begin{pmatrix} \frac{3}{2} & -2\\ -\frac{1}{2} & 1\\ \end{pmatrix}$}$$
+
+iv. What is the rank of $\mathbf{X}$?
+
+$$\begin{pmatrix}  2 & 4 \\ 1 & 3 \\ \end{pmatrix} \sim \begin{pmatrix}  1 & 2 \\ 1 & 3 \\ \end{pmatrix} \sim \begin{pmatrix}  1 & 2 \\ 0 & 1 \\ \end{pmatrix}$$
+
+Therefore,
+$$\textbf{rank} (\mathbf{X}) = \colorbox{yellow}{2}$$\\
+
+\noindent (b) Draw the regions corresponding to vectors $\mathbf{x} \in \mathbb{R}^2$ with following norms (you can hand draw or use software for this question):\\
+
+i. $||\mathbf{x}||_2 \leq 1$ (Recall $||\mathbf{x}||_2 = \sqrt{\sum_i x_i^2}$.)
+\begin{center}
+\includegraphics[scale = 0.17]{ 2bi.jpg }
+\end{center}
+
+ii. $||\mathbf{x}||_0 \leq 1$ (Recall $||\mathbf{x}||_0 = \sum_{i:x_i \neq 0}  1$.)
+\begin{center}
+\includegraphics[scale = 0.17]{ 2bii.jpg }
+\end{center}
+
+iii. $||\mathbf{x}||_1 \leq 1$ (Recall $||\mathbf{x}||_1 = \sum_i |x_i|$.)
+\begin{center}
+\includegraphics[scale = 0.17]{ 2biii.jpg }
+\end{center}
+
+iv. $||\mathbf{x}||_\infty \leq 1$ (Recall $||\mathbf{x}||_\infty = \max_i |x_i|$.)
+\begin{center}
+\includegraphics[scale = 0.17]{ 2biv.jpg }
+\end{center}
+\vspace{1em}
+
+\noindent (c)
+
+i. Give the definition of the eigenvalues and the eigenvectors of a square matrix.\\
+
+Let $A$ be an $n \times n$ matrix.
+
+An \textbf{eigenvector} of $A$ is a non-zero vector $v$ in $\mathbb{R}^n$ such that $Av = \lambda v$, for some scalar $\lambda$.
+
+An \textbf{eigenvalue} of $A$ is a scalar $\lambda$ such that equation $Av = \lambda v$ has a nontrivial solution.
+
+If $Av = \lambda v$ for $v\neq 0$, $\lambda$ is the \textbf{eigenvalue} for $v$, and $v$ is the \textbf{eigenvector} for $\lambda$.\\
+
+ii. Find the eigenvalues and eigenvectors of
+$$\mathbf{A} =    \begin{pmatrix}  2 & 1 \\ 1 & 2 \\ \end{pmatrix}$$
+\begin{align*}
+\det(A-\lambda I) &= \det(\begin{bmatrix}  2-\lambda & 1 \\ 1 & 2-\lambda \\ \end{bmatrix}) \\
+&= 4 - 4\lambda + \lambda^2 -1\\
+&= (\lambda - 1 ) (\lambda - 3)
+\end{align*}
+Hence, we have eigenvalues are \colorbox{yellow}{$\lambda_1 = 1, \lambda_2 = 3$}.\\
+
+For $\lambda_1 = 1$:
+\begin{align*}
+\begin{bmatrix}  2  & 1 \\ 1 & 2  \\ \end{bmatrix} \begin{bmatrix}  x_1 \\ x_2 \\ \end{bmatrix} &= \begin{bmatrix}  x_1 \\ x_2 \\ \end{bmatrix}\\
+2x_1 + x_2 &= x_1\\
+x_1 + 2x_2 &= x_2\\
+x_1 &= - x_2
+\end{align*}
+So we have our eigenvalue for $\lambda_1 = 1$ as \colorbox{yellow}{$v_1 = a\begin{bmatrix}  -1 \\ 1 \\ \end{bmatrix}$}, where $a$ is any non-zero real number.\\
+
+For $\lambda_2 = 3$:
+\begin{align*}
+\begin{bmatrix}  2  & 1 \\ 1 & 2  \\ \end{bmatrix} \begin{bmatrix}  3x_1 \\ 3x_2 \\ \end{bmatrix} &= \begin{bmatrix}  x_1 \\ x_2 \\ \end{bmatrix}\\
+2x_1 + x_2 &= 3x_1\\
+x_1 + 2x_2 &= 3x_2\\
+x_1 &= x_2
+\end{align*}
+So we have our eigenvalue for $\lambda_2 = 3$ as \colorbox{yellow}{$v_2 = b\begin{bmatrix}  1 \\ 1 \\ \end{bmatrix}$}, where $b$ is any non-zero real number.\\
+
+iii. For any positive integer $k$, show that the eigenvalues of $\mathbf{A}^k$ are $\lambda_1^k, \lambda_2^k,...,\lambda_n^k$, the $k^{th}$ powers of the eigenvalues of matrix $\mathbf{A}$, and that each eigenvector of $\mathbf{A}$ is still an eigenvector of $\mathbf{A}^k$.\\
+
+For an arbitrary $\lambda_i$, where $i \in \{1,2, ... , n\}$, we have $\mathbf{A}v_i = \lambda_i v$.
+
+Then, $\mathbf{A}\mathbf{A}\lambda_i v_i = \mathbf{A}\lambda_i v_i = \lambda_i \mathbf{A} v = \lambda_i \lambda_i v$.
+
+Similarly, $\mathbf{A}^k v_i = \mathbf{A}^{k-1}\mathbf{A} v_i =  \mathbf{A}^{k-1} \lambda_i v_i = \lambda_i \mathbf{A}^{k-1} v_i = \lambda_i^2 \mathbf{A}^{k-2} v_i = \lambda_i^3 \mathbf{A}^{k-3} v_i = ... = \lambda_i^k v_i$.\\
+
+Therefore, according to the definition of eigenvalue and eigenvector, we see that he eigenvalues of $\mathbf{A}^k$ are $\lambda_1^k, \lambda_2^k,...,\lambda_n^k$, the $k^{th}$ powers of the eigenvalues of matrix $\mathbf{A}$, and that each eigenvector of $\mathbf{A}$ is still an eigenvector of $\mathbf{A}^k$.\\
+
+Proved. $\square$\\
+
+
+
+\noindent (d) Consider the vectors $\mathbf{x}$ and $\mathbf{a}$ and the symmetric matrix $\mathbf{A}$.\\
+
+i. What is the first derivative of $\mathbf{a}^T\mathbf{x}$ with respect to $\mathbf{x}$?\\
+
+We denote $f(x) = \mathbf{a}^T\mathbf{x} = \sum_{i = 1}^n a_i x_i$.
+
+So $\dfrac{df}{d\mathbf{x}} = \begin{bmatrix} \frac{\partial f}{\partial x_1} \\ \frac{\partial f}{\partial x_2} \\ ... \\ \frac{\partial f}{\partial x_n} \\ \end{bmatrix}$.\\
+\vspace{1em}
+
+Then, $\dfrac{\partial f}{\partial x_j} =  \dfrac{\partial(\sum_{i = 1}^n a_i x_i)}{\partial x_j} = a_j$.\\
+
+Hence, $\dfrac{d(\mathbf{a}^T\mathbf{x})}{d\mathbf{x}} = \begin{bmatrix} a_1 \\ a_2 \\ ... \\ a_n \\ \end{bmatrix} = \colorbox{yellow}{$\mathbf{a}^T$}$.\\
+\vspace{1.5em}
+
+ii. What is the first derivative of $\mathbf{x}^T \mathbf{Ax}$ with respect to $\mathbf{x}$? What is the second derivative?\\
+
+First derivative:
+
+We denote $f(x) = \mathbf{x}^T\mathbf{Ax} = \sum_{i = 1}^n \sum_{j = 1}^n A_{ij} x_i x_j$.\\
+
+So $\dfrac{df}{d\mathbf{x}} = \begin{bmatrix} \frac{\partial f}{\partial x_1} \\ \frac{\partial f}{\partial x_2} \\ ... \\ \frac{\partial f}{\partial x_n} \\ \end{bmatrix}$.\\
+\vspace{1em}
+
+Then, 
+\begin{align*}
+\dfrac{\partial f}{\partial x_k} &=  \dfrac{\partial(\sum_{i = 1}^n \sum_{j = 1}^n A_{ij} x_i x_j)}{\partial x_k} = \dfrac{\partial(\sum_{i=1}^n A_{ik}x_ix_k +  \sum_{j=1}^n A_{kj}x_kx_j )}{\partial x_k}\\
+&= \sum_{i=1}^n A_{ik}x_i +  \sum_{j=1}^n A_{kj}x_j\\
+&= 2\sum_{i=1}^n A_{ki}x_i.
+\end{align*}
+
+Therefore, $\dfrac{df}{d\mathbf{x}} = \begin{bmatrix} 2\sum_{i=1}^n A_{1i}x_i \\ 2\sum_{i=1}^n A_{2i}x_i \\ ... \\ 2\sum_{i=1}^n A_{ni}x_i \\ \end{bmatrix} = 2\begin{bmatrix} A_{11} & A_{12} & ... & A_{1n} \\  A_{21} & A_{22} & ... & A_{2n}  \\ ... \\ A_{n1} & A_{n2} & ... & A_{nn}  \\ \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ ... \\ x_n \\\end{bmatrix} = \colorbox{yellow}{$2\mathbf{Ax}$}$.\\
+\vspace{1.5em}
+
+Second derivative:\\
+
+$\dfrac{d^2f}{d\mathbf{x}^2} = \dfrac{d(2\mathbf{Ax})}{d\mathbf{x}} = \colorbox{yellow}{$2\mathbf{A}$}.$\\
+
+
+\noindent(e)
+
+i. Show that the vector $\mathbf{w}$ is orthogonal to the line $\mathbf{w}^T\mathbf{x} + b = 0$. (Hint: Consider two
+points $\mathbf{x_1}$, $\mathbf{x_2}$ that lie on the line. What is the inner product $\mathbf{w}^T(\mathbf{x_1} - \mathbf{x_2})$?)\\
+
+Consider 2 points $\mathbf{x_1}, \mathbf{x_1}$ lying on the line.
+
+Then, the inner product $\mathbf{w}^T(\mathbf{x_1} - \mathbf{x_2}) = \mathbf{w}^T\mathbf{x_1} - \mathbf{w}^T\mathbf{x_2} = -b + b = 0$.
+
+Since the inner product of $\mathbf {w}$ and $\mathbf{x_1} - \mathbf{x_2}$ is 0, we get that $\mathbf {w}$ is orthogonal to $\mathbf{x_1} - \mathbf{x_2}$, which means $\mathbf {w}$ is orthogonal to the line $\mathbf{w}^T\mathbf{x} + b = 0$.\\
+
+Proved . $\square$.\\
+
+ii. Argue that the distance from the origin to the line $\mathbf{w}^T\mathbf{x}+b = 0$ is $\frac{b}{||\mathbf{w}||_2}$.\\
+
+From i, we see that $\mathbf{w}$ is orthogonal to the line. Hence, if we denote the projection of origin to the line as $\mathbf{x}_p$, we see that $\mathbf{x}_p = m \mathbf{w}$, for some real number $m$.
+
+Then, $\mathbf{w}^T\mathbf{x}_p + b = 0$, and thus $\mathbf{w}^T(m\mathbf{w}) + b = 0$. So $m = \frac{b}{\mathbf{w}^T\mathbf{w}}$, and $\mathbf{x}_p = \frac{b\mathbf{w}}{\mathbf{w}^T\mathbf{w}} = \frac{b}{\mathbf{w}^T}$.
+
+Therefore, the distance is $||\mathbf{x}_p||_2 = ||\frac{b}{\mathbf{w}^T}||_2 = \sqrt{\frac{b^2}{\mathbf{w}^T}} = \frac{b}{||\mathbf{w}||_2}$.\\
+
+Proved . $\square$.
+
+\section*{Problem 3}
+
+(a) Consider a sample of data $S$ obtained by flipping a coin five times. $X_i,i \in \{1,...,5\}$ is a random variable that takes a value 0 when the outcome of coin flip $i$ turned up heads, and 1 when it turned up tails. Assume that the outcome of each of the flips does not depend on the outcomes of any of the other flips. The sample obtained $S = (X_1, X_2, X_3, X_4, X_5) = (1,1,0,1,0)$.\\
+
+i. What is the sample mean for this data?\\
+
+$\overline{S} = (1+1+0+1+0) / 5 = \colorbox{yellow}{3/5}$.\\
+
+ii. What is the unbiased sample variance?\\
+
+$s^2 = \frac{1}{n-1}\sum (X_i-\overline{X})^2 = 1/4 \cdot ((1 - 0.6)^2 + (1 - 0.6)^2 + (0 - 0.6)^2 + (1 - 0.6)^2 + (0 - 0.6)^2) = \colorbox{yellow}{0.3}$.\\
+
+iii. What is the probability of observing this data assuming that a coin with an equal probability of heads and tails was used? ($i.e.$, The probability distribution of $X_i$ is $P(X_i =1) = 0.5, P(X_i = 0) = 0.5$.)\\
+
+$0.5^5 = \colorbox{yellow}{1/32}$.\\
+
+iv. Note the probability of this data sample would be greater if the value of the probability of heads $P (X_i = 1)$ was not 0.5 but some other value. What is the value that maximizes the probability of the sample $S$? [Optional: Can you prove your answer is correct?]\\
+
+We let $P(X_i = 1) = p$. Then we want to maximize the value of $p^3(1-p)^2$.\\
+
+Then $\dfrac{d(p^3(1-p)^2)}{dp} = \dfrac{d(p^5 - 2p^4 + p^3)}{dp} = 5p^4 - 8 p^3 + 3 p^2 = p^2(5p-3)(p-1) = 0$.\\
+
+We have $p_1 = 0, p_2 = 3/5, p_3 = 1$.\\
+
+We see when $p_1 = 0$ or $p_3 = 1$, the probability is 0, which is minimized, so we exclude these two points.\\
+
+Now we consider $p_2 = 3/5$.\\
+
+The second derivative is $\dfrac{d(5p^4 - 8 p^3 + 3 p^2)}{dp} = 20p^3 - 24p^2 + 6p = -0.72 < 0$. So this point is surely a local maximum.\\
+
+Thus, $P(X_i = 1) = \colorbox{yellow}{$3/5$}$ maximizes the probability of the sample S.\\
+
+v. Given the following joint distribution between $X$ and $Y$ , what is $P (X = T |Y = b)$?\\
+
+$P (X = T |Y = b) = \dfrac{P(X=T \cap Y=b)}{P(Y = b)} = \dfrac{0.1}{0.1 + 0.15} = \colorbox{yellow}{$2/5$}$.\\
+
+
+\noindent(b) Match the distribution name to its formula.\\
+
+Gaussian $\rightarrow$ $\frac{1}{\sqrt{(2\pi)\sigma^2}}exp(-\frac{1}{2\sigma^2}(x-\mu)^2)$.\\
+
+Exponential $\rightarrow$ $\lambda e^{-\lambda x}$ when $x \geq 0$; $0$ otherwise.\\
+
+Uniform $\rightarrow$ $\frac{1}{b-a}$ when $a \leq x \leq b$; 0 otherwise.\\
+
+Bernoulli $\rightarrow$ $p^x(1 -p)^{1-x}$, when $x \in \{0, 1\}$; 0 otherwise.\\
+
+Binomial $\rightarrow$ ${n \choose x} p^x (1 - p)^{n - x}$.\\
+
+
+\noindent(c) What is the mean and variance of a $Bernoulli(p)$ random variable?\\
+
+$E[Bernoulli(p)] = 1 p + 0 p = \colorbox{yellow}{p}$. \\
+
+$Var(Bernoulli(p)) = E[X^2] - (E[X])^2 = (1^2 p + 0^2p) - p^2 = \colorbox{yellow}{$p - p^2$}$.\\
+
+\noindent(d) If the variance of a zero-mean random variable $X$ is $\sigma^2$, what is the variance of $2X$? What about the variance of $X + 2$?\\
+
+$Var(X) = \sigma^2 = E[X^2] - (E[X])^2$.\\
+
+$Var(2X) = E[(2X)^2] - (E[2X])^2 =E[4X^2] - (2E[X])^2 = 4(E[X^2] - (E[X])^2) = \colorbox{yellow}{$4\sigma^2$}$.\\
+
+$Var(X + 2) = E[(X + 2)^2] - (E[X + 2])^2 = (E[X^2] + E[4X] + E[4]) - (E[X] + E[2])^2 = E[X^2] + 4E[X] + 4 - (E[X])^2 - 4E[X] - 4 = E[X^2] - (E[X])^2 = \colorbox{yellow}{$\sigma^2$}$.\\
+
+\section*{Problem 4}
+
+\textbf{Big-O notation} For each pair $(f,g)$ of functions below, list which of the following are true:
+$f(n) = O(g(n))$, $g(n) = O(f(n))$, or both. Briefly justify your answers.\\
+
+\noindent(a) $f(n) = \ln(n)$, $g(n) = \lg(n)$. Note that ln denotes log to the base e and lg denotes log to the base 2.\\
+
+\colorbox{yellow}{Both}.\\
+
+$\lim_{n \to \infty} \frac{f(n)}{g(n)} = \frac{\ln(n)}{\lg(n)} = \frac{\log_e(n)}{\log_2(n)} = \frac{\log_2(n)/\log_2(e)}{\log_2(n)} = \frac{1}{\log_2(n)} < \infty$.\\
+
+So $f(n) = O(g(n))$.\\
+
+$\lim_{n \to \infty} \frac{g(n)}{f(n)} = \frac{\lg(n)}{\ln(n)} = \log_2(n) < \infty$.\\
+
+So $g(n) = O(f(n))$.\\
+
+\noindent(b) $f(n) = 3^n$, $g(n) = n^{10}$\\
+
+\colorbox{yellow}{$g(n) = O(f(n))$}.\\
+
+$\lim_{n \to \infty} \frac{f(n)}{g(n)} = \frac{3^n}{n^{10}}$.\\
+
+Now we use ratio test: $\lim_{n \to \infty} \frac{3^{n+1}}{(n+1)^{10}} \cdot \frac{n^{10}}{3^n} = 3 \cdot \lim_{n \to \infty} \frac{n^{10}}{(n+1)^{10}} = 3 > 1$.\\
+
+Therefore, $\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty$.\\
+
+So $f(n) \neq O(g(n))$.\\
+
+$\lim_{n \to \infty} \frac{g(n)}{f(n)} = \frac{n^{10}}{3^n}$.\\
+
+Now we use ratio test: $\lim_{n \to \infty} \frac{(n+1)^{10}}{3^{n+1}} \cdot \frac{3^n}{n^{10}} =  \frac{1}{3} \cdot \lim_{n \to \infty} \frac{(n+1)^{10}}{n^{10}} = \frac{1}{3} < 1$.\\
+
+Therefore, $\lim_{n \to \infty} \frac{f(n)}{g(n)} < \infty$.\\
+
+So $g(n) = O(f(n))$. \\
+
+\noindent(c) $f(n) = 3^n$, $g(n) = 2^n$\\
+
+\colorbox{yellow}{$g(n) = O(f(n))$}.\\
+
+$\lim_{n \to \infty} \frac{f(n)}{g(n)} = \lim_{n \to \infty} \frac{3^n}{2^n} =  \lim_{n \to \infty} (\frac{3}{2})^n = \infty$.\\
+
+So $f(n) \neq O(g(n))$.\\
+
+$\lim_{n \to \infty} \frac{g(n)}{f(n)} = \lim_{n \to \infty} \frac{2^n}{3^n} = \lim_{n \to \infty} (\frac{2}{3})^n = 0 < \infty$.\\
+
+So $g(n) = O(f(n))$. \\
+\pagebreak
+\section*{Problem 5}
+
+(a) Sampling from multivariate probability distributions
+
+i.
+\begin{center}
+\includegraphics[scale = 0.35]{ 5ai.png }
+\end{center}
+\pagebreak
+
+ii.
+\begin{center}
+\includegraphics[scale = 0.31]{ 5aii.png }
+\end{center}
+
+iii.
+\begin{center}
+\includegraphics[scale = 0.33]{ 5aiii.png }
+\end{center}
+
+iv.
+\begin{center}
+\includegraphics[scale = 0.32]{ 5aiv.png }
+\end{center}
+
+v.
+\begin{center}
+\includegraphics[scale = 0.33]{ 5av.png }
+\end{center}
+
+\noindent(b)\\
+
+i.
+
+Name: netflix\_titles.csv
+
+Link: https://www.kaggle.com/datasets/shivamb/netflix-shows/\\
+
+ii.
+
+Description: his tabular dataset consists of listings of all the movies and tv shows available on Netflix, along with details such as cast, directors, ratings, release year, duration, etc.\\
+
+iii.
+
+There are 8807 examples.\\
+
+iv. 
+
+There are 11 features (excluded show\_id)
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
